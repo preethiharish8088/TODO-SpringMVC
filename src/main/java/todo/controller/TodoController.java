@@ -2,6 +2,7 @@ package todo.controller;
 
 import java.time.LocalDate;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,10 +11,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import todo.dto.TodoUser;
+import todo.service.TodoService;
 
 @Controller
 public class TodoController {
 
+	@Autowired
+	TodoService service;
+	
 	@GetMapping({ "/", "/login" })
 	public String loadLogin() {
 		return "Login";
@@ -25,10 +30,8 @@ public class TodoController {
 	}
 
 	@PostMapping("/signup")
-	@ResponseBody
 	public String signup(TodoUser user,@RequestParam String date) {
-		user.setDob(LocalDate.parse(date));
-		return user.toString();
+		return service.signup(user,date);
 	}
 
 }
