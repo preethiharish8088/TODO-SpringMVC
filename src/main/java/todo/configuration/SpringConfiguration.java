@@ -8,12 +8,14 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @ComponentScan("todo")
-public class MySpringContainerConfiguration {
+public class SpringConfiguration {
+
 	@Bean
-	public ViewResolver viewResolver() {
-		InternalResourceViewResolver resolver=new InternalResourceViewResolver();
-		resolver.setPrefix("/view/");
+	ViewResolver viewResolver() {
+		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+		resolver.setPrefix("/jsp/");
 		resolver.setSuffix(".jsp");
 		return resolver;
 	}
+
 }

@@ -41,7 +41,7 @@
 					</tr>
 					<tr>
 						<!-- This is for Loading Signup Page -->
-						<th colspan="2"><a href="Signup.html"><button type="button">Click to Create Account</button></a>
+						<th colspan="2"><a href="signup"><button type="button">Click to Create Account</button></a>
 						</th>
 					</tr>
 				</table>
