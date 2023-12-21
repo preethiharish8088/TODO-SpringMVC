@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 
@@ -18,6 +18,7 @@ div {
 
 <body>
 	<div>
+	
 		<h1>Todo Signup</h1>
 		<!-- action is address where the values are carried to  -->
 		<form action="signup" method="post">
@@ -49,6 +50,7 @@ div {
 						<th>Date of Birth:</th>
 						<!-- Name attribute is Complusory to carry value  -->
 						<th><input type="date" name="date" required></th>
+						<th><h6 style="color:red">${dob}</h6></th>
 					</tr>
 					<tr>
 						<th>Gender:</th>
@@ -71,6 +73,7 @@ div {
 				</table>
 			</fieldset>
 		</form>
+		
 	</div>
 </body>
 
