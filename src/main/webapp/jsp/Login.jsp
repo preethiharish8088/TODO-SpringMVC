@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 
@@ -19,6 +19,7 @@
 <body>
 	<div>
 		<h1>Todo Login</h1>
+		<h2 style="color:green">${pass}</h2>
 		<!-- action is address where the values are carried to  -->
 		<form action="login" method="post">
 			<fieldset>

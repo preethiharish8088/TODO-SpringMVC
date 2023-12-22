@@ -34,6 +34,7 @@ div {
 						<th>Email:</th>
 						<!-- Name attribute is Complusory to carry value  -->
 						<th><input type="email" name="email" required></th>
+						<th><h6 style="color:red">${email}</h6></th>
 					</tr>
 					<tr>
 						<th>Password:</th>

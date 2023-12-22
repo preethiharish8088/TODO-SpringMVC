@@ -2,6 +2,7 @@ package todo.service;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,8 +25,17 @@ public class TodoService {
 			return "Signup";
 		}
 		else{
-			
-			return "Login";
+			List<TodoUser> list=dao.findByEmail(user.getEmail());
+			if(list.isEmpty())
+			{
+				dao.save(user);
+				map.put("pass", "Account Created Success");
+				return "Login";
+			}
+			else {
+				map.put("email", "* Email Should be Unique");
+				return "Signup";
+			}
 		}
 	}
 
