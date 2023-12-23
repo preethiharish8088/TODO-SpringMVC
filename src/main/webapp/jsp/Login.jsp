@@ -29,11 +29,13 @@
 						<th>Email: </th>
 						<!-- Name attribute is Complusory to carry value  -->
 						<th><input type="email" name="email"></th>
+						<th><h6 style="color:red">${email}</h6></th>
 					</tr>
 					<tr>
 						<th>Password: </th>
 						<!-- Name attribute is Complusory to carry value  -->
 						<th><input type="password" name="password"></th>
+						<th><h6 style="color:red">${password}</h6></th>
 					</tr>
 					<tr>
 						<!-- Clicking this button will carry the values to action Location  -->

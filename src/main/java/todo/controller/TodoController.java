@@ -1,5 +1,7 @@
 package todo.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -29,6 +31,20 @@ public class TodoController {
 	@PostMapping("/signup")
 	public String signup(TodoUser user,@RequestParam String date,ModelMap map) {
 		return service.signup(user,date,map);
+	}
+	
+	@PostMapping("/login")
+	public String login(@RequestParam String email,String password,ModelMap map,HttpSession session)
+	{
+		return service.login(email,password,map,session);
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session,ModelMap map)
+	{
+		session.invalidate();
+		map.put("pass", "Logout Success");
+		return "Login";
 	}
 
 }
