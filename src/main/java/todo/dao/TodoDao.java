@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import todo.dto.TodoTask;
 import todo.dto.TodoUser;
 
 @Component
@@ -23,5 +24,15 @@ public class TodoDao {
 		manager.getTransaction().begin();
 		manager.persist(user);
 		manager.getTransaction().commit();
+	}
+
+	public void save(TodoTask task) {
+		manager.getTransaction().begin();
+		manager.persist(task);
+		manager.getTransaction().commit();
+	}
+
+	public List<TodoTask> fetchAllTask(int id) {
+		return manager.createQuery("select x from TodoTask x where user_id=?1").setParameter(1, id).getResultList();
 	}
 }

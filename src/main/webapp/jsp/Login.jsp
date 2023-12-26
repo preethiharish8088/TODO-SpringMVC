@@ -18,6 +18,7 @@
 
 <body>
 	<div>
+	<h2 style="color:red">${fail}</h2>
 		<h1>Todo Login</h1>
 		<h2 style="color:green">${pass}</h2>
 		<!-- action is address where the values are carried to  -->
