@@ -31,7 +31,7 @@ public class TodoController {
 
 	@GetMapping("/home")
 	public String loadHome(HttpSession session, ModelMap model) {
-		return service.loadHome(session,model);
+		return service.loadHome(session, model);
 	}
 
 	@PostMapping("/signup")
@@ -46,17 +46,39 @@ public class TodoController {
 
 	@GetMapping("/logout")
 	public String logout(HttpSession session, ModelMap map) {
-		return service.logout(session,map);
+		return service.logout(session, map);
 	}
 
 	@GetMapping("/add-task")
 	public String loadAddTask(HttpSession session, ModelMap map) {
-		return service.addTask(session,map);
+		return service.addTask(session, map);
+	}
+
+	@PostMapping("/add-task")
+	public String addTask(TodoTask task, HttpSession session, ModelMap map) {
+		return service.addTask(task, session, map);
+	}
+
+	@GetMapping("/change-status")
+	public String changeStatus(@RequestParam int id, HttpSession session, ModelMap map) {
+		return service.changeStatus(id, session, map);
+	}
+
+	@GetMapping("/delete")
+	public String deleteTask(@RequestParam int id, HttpSession session, ModelMap map) {
+		return service.deleteTask(id, session, map);
 	}
 	
-	@PostMapping("/add-task")
-	public String addTask(TodoTask task,HttpSession session, ModelMap map) {
-		return service.addTask(task,session,map);
+	@GetMapping("/edit")
+	public String loadEdit(HttpSession session,ModelMap map,@RequestParam int id)
+	{
+		return service.loadEdit(session,map,id);
+	}
+	
+	@PostMapping("/update-task")
+	public String updateTask(HttpSession session,ModelMap map,TodoTask task)
+	{
+		return service.updateTask(task,session,map);
 	}
 
 }

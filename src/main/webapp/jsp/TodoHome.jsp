@@ -20,7 +20,7 @@ div {
 	<div>
 		<h2 style="color: green">${pass}</h2>
 		<h1>Todo Home</h1>
-		<table border="1px solid black">
+		<table border="1">
 			<tr>
 				<th>Task Name</th>
 				<th>Task Description</th>
@@ -34,13 +34,11 @@ div {
 					<th>${task.name}</th>
 					<th>${task.description}</th>
 					<th>${task.createdTime.format(DateTimeFormatter.ofPattern('dd-MM-YYYY hh:mm'))}</th>
-					<th>
-					<spring:if test="${task.status}">
+					<th><spring:if test="${task.status}">
 					Completed
-					</spring:if> 
-					<spring:if test="${!task.status}">
-					<a href="change-status?id=${task.id}"><button>Complete</button></a>
-					</spring:if></th>
+					</spring:if> <spring:if test="${!task.status}">
+							<a href="change-status?id=${task.id}"><button>Complete</button></a>
+						</spring:if></th>
 					<th><a href="delete?id=${task.id}"><button>Delete</button></a></th>
 					<th><a href="edit?id=${task.id}"><button>Edit</button></a></th>
 				</tr>

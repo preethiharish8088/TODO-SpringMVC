@@ -98,9 +98,65 @@ public class TodoService {
 			task.setCreatedTime(LocalDateTime.now());
 			task.setUser(user);
 			dao.save(task);
-			
+
 			map.put("list", dao.fetchAllTask(user.getId()));
 			map.put("pass", "Data Saved Success");
+			return "TodoHome";
+		}
+	}
+
+	public String changeStatus(int id, HttpSession session, ModelMap map) {
+		TodoUser user = (TodoUser) session.getAttribute("todouser");
+		if (user == null) {
+			map.put("fail", "Invalid Session");
+			return "Login";
+		} else {
+			TodoTask task = dao.fetchTaskById(id);
+			task.setStatus(true);
+			dao.update(task);
+			map.put("list", dao.fetchAllTask(user.getId()));
+			map.put("pass", "Status Changed Success");
+			return "TodoHome";
+		}
+	}
+
+	public String deleteTask(int id, HttpSession session, ModelMap map) {
+		TodoUser user = (TodoUser) session.getAttribute("todouser");
+		if (user == null) {
+			map.put("fail", "Invalid Session");
+			return "Login";
+		} else {
+			TodoTask task = dao.fetchTaskById(id);
+			dao.delete(task);
+			map.put("list", dao.fetchAllTask(user.getId()));
+			map.put("pass", "Task Deleted Success");
+			return "TodoHome";
+		}
+	}
+
+	public String loadEdit(HttpSession session, ModelMap map, int id) {
+		TodoUser user = (TodoUser) session.getAttribute("todouser");
+		if (user == null) {
+			map.put("fail", "Invalid Session");
+			return "Login";
+		} else {
+			TodoTask task = dao.fetchTaskById(id);
+			map.put("task", task);
+			return "EditTask";
+		}
+	}
+
+	public String updateTask(TodoTask task, HttpSession session, ModelMap map) {
+		TodoUser user = (TodoUser) session.getAttribute("todouser");
+		if (user == null) {
+			map.put("fail", "Invalid Session");
+			return "Login";
+		} else {
+			task.setUser(user);
+			task.setCreatedTime(LocalDateTime.now());
+			dao.update(task);
+			map.put("list", dao.fetchAllTask(user.getId()));
+			map.put("pass", "Updated Success");
 			return "TodoHome";
 		}
 	}
